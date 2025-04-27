@@ -1,10 +1,24 @@
 # Corporate Bond Pricer
 Belinda AYDOGMUS Myriam Magda BENOUDINA Sihame JDID
 
-Le projet a pour but de créer un outil calculant le prix, la duration ainsi que le calendrier des flux de trésorerie d'une obligation
+Le projet a pour but de créer un outil calculant le prix, la duration ainsi que le calendrier des flux de trésorerie d'une obligation.
 
 
 # Introduction
+
+L'idée de ce projet nous est venu car où il était demandé à l'une d'entre nous lors d'un ancien cours en Produits et Marchés Financiers en troisième année de licence de calculer manuellement le prix, la duration et une partie du calendrier des flux de trésorerie d'une obligation.
+Ce travail s'est avéré extrêmement long et fastidieux, car il fallait faire l'ensemble des calculs à la main, sans automatisation et uniquement à partir de taux fixes imposés.
+
+À partir de cette expérience, il nous a semblé pertinent de développer un outil automatisé capable non seulement de réaliser ces calculs instantanément, mais surtout d'intégrer une approche plus réaliste du marché.
+En effet, contrairement au contexte simplifié du cours, ce projet exploite désormais des données qui varient en temps et en heure notamment avec :
+
+- La US Treasury Yield Curve (courbe des taux sans risque américains) récupérée en temps réel via l'API de la FRED
+- Les taux EURIBOR 3M actualisés régulièrement par webscraping
+
+Grâce à ces données mises à jour automatiquement, le pricing et la duration des obligations sont calculés de manière dynamique, en tenant compte des fluctuations du marché et des caractéristiques propres à chaque entreprise.
+L'outil propose également un calendrier complet des flux de trésorerie, intégrant à chaque échéance les cashflows actualisés par les taux du marché.
+
+En résumé, là où l'exercice manuel s'arrêtait à un modèle figé et très théorique, ce projet propose un véritable pricer professionnel, bien plus proche des pratiques utilisées dans le monde de la finance.
 
 # I. Mise en place de l'environnement
 
@@ -709,3 +723,12 @@ if __name__ == "__main__":
 ```
 
 # Conclusion
+
+En somme, ce projet a permis de concevoir un outil capable de calculer le prix, la duration et le calendrier de flux de trésorerie d'une obligation, tout en prenant en compte des données financières actualisées en temps réel. En mobilisant les courbes de taux sans risque américaines (US Yield Curve) ainsi que les taux européens (EURIBOR 3M), l'utilisateur obtient des résultats basés sur l’état actuel du marché, ce qui renforce la pertinence des calculs réalisés.
+
+Le choix de travailler en programmation orientée objet (POO) s’est révélé particulièrement pertinent dans ce contexte. La création de classes dédiées aux courbes de taux et aux obligations a permis de structurer notre code de manière claire. Cette approche a non seulement facilité les modifications du programme, mais elle a également rendu l’ensemble plus évolutif, notamment pour intégrer de nouveaux types de courbes ou d’obligations à l’avenir. L'ajout d'une interface graphique via Tkinter a enfin permis de rendre notre application accessible à n'importe quel utilisateur en simplifiant le processus de simulation.
+
+Cependant, notre projet rencontre aussi certaines limites. En termes de présentation visuelle, un développement sous Excel aurait sans doute permis une meilleure mise en forme des résultats, notamment pour les graphiques et les tableaux de flux, dans un environnement (qu'on trouve) plus logique lorsqu'il est question du secteur financier. De plus, l'accès aux données financières a été un véritable défi : trouver des sources gratuites sans nous faire constamment bloquer par ces sites internet s’est révélé compliqué. Pour la base de données CDX IG Prices, nous avons dû nous appuyer sur une ancienne extraction de données provenant de Bloomberg, réalisée dans l'ancienne université (d'une des personnes participant au projet) où des terminaux Bloomberg étaient disponibles. Cette année, cet accès n'est plus possible, et sans cette base conservée, le projet n’aurait probablement jamais pu aboutir.
+
+En définitive, malgré ces limites, notre pricer représente une première pierre solide pour construire à terme un outil encore plus complet et dynamique, capable de s’adapter pleinement aux réalités changeantes des marchés financiers.
+
